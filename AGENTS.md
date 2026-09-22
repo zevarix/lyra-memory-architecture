@@ -1,0 +1,78 @@
+# Public repository guidance
+
+This repository owns the **public architecture/explainer surface** for Lyra Memory. It is not the implementation repository and must never become a mirror of private operational state.
+
+## Authority
+
+1. This repository is authoritative for its own public architecture wording, research citations, synthetic examples, public site, and future public specification work.
+2. The private Lyra Memory implementation remains authoritative for actual schema, migrations, runtime, security controls, operational policy, and acceptance evidence.
+3. Owning repositories and systems remain authoritative for current facts and execution authority. A memory record is context, never permission.
+4. Current user/Product direction wins when it changes the intended public model.
+
+## Publication boundary
+
+This repository is public. Every committed byte must be safe for an anonymous reader.
+
+Do not commit:
+
+- real memory contents or raw conversations;
+- private identifiers that are not deliberately part of the public project;
+- credentials, tokens, private keys, cookies, connection strings, or secrets;
+- OAuth identities or private access configuration;
+- deployment topology, hostnames, internal paths, or attack-useful infrastructure detail;
+- private issue/acceptance evidence copied from an implementation owner;
+- health, finance, child, legal, authentication, or other sensitive personal-domain data;
+- private repository content merely for provenance.
+
+Use synthetic examples only.
+
+## Research
+
+Refresh comparison claims from current first-party documentation immediately before material publication updates. Prefer official product documentation and upstream repositories.
+
+Comparisons must be neutral and factual. Do not rank products, claim Lyra Memory is the first/unique/best, or erase areas where another system is more mature.
+
+Distinguish:
+
+- documented external behavior;
+- implemented private Lyra Memory capability;
+- planned public architecture;
+- experimental ideas.
+
+## Architectural invariants
+
+Preserve these distinctions unless Product direction explicitly changes them:
+
+- **Lyra Memory** — durable associative context/significance;
+- **MemPalace** — local semantic/index/navigation companion;
+- **Session Continuity** — unresolved execution recovery;
+- **owning repositories/systems** — current truth and authority;
+- **identity canon** — current agent identity when applicable.
+
+Retrieval never grants execution authority.
+
+## Public automation
+
+Repository visibility: **public**.
+
+Portfolio automation enrollment: **disenrolled**.
+
+This public repository does not inherit private shared flex-worker execution, credentials, host allocation, scheduler bindings, merge authority, deployment authority, or other private automation merely because it belongs to the same portfolio.
+
+Ordinary GitHub collaboration and separately authorized public CI are not prohibited by this rule.
+
+## Change workflow
+
+After the initial user-authorized bootstrap, prefer focused branches and reviewed pull requests for material changes.
+
+Before publishing:
+
+1. inspect the complete public diff;
+2. search for secrets and private identifiers;
+3. verify every example is synthetic;
+4. recheck external claims against current primary sources;
+5. distinguish implemented, validated, planned, and experimental capabilities;
+6. validate the static site locally;
+7. read back the exact public revision and rendered public surface.
+
+Do not add a license on behalf of Product/legal authority.
