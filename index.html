@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lyra Memory — Governed Long-Term Memory for AI Agents</title>
   <meta name="description" content="A public architecture explainer for governed long-term agent memory: selective persistence, provenance, correction history, and a hard boundary between recollection and authority.">
-  <meta name="theme-color" content="#10131a">
+  <meta name="theme-color" content="#0b0f14">
   <link rel="canonical" href="https://zevarix.github.io/lyra-memory-architecture/">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -30,401 +30,441 @@
   <main id="main">
     <section class="hero" id="top">
       <div class="shell hero-grid">
-        <div>
-          <p class="eyebrow">Public architecture explainer · September 2026</p>
-          <h1>Governed long-term memory for AI agents.</h1>
-          <p class="lede">Remember less. Remember deliberately. Preserve provenance. Never confuse recollection with authority.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#architecture">See the architecture</a>
-            <a class="button secondary" href="#adopt">Evaluate the model</a>
+        <div class="hero-copy">
+          <p class="hero-label">Governed long-term memory for AI agents</p>
+          <h1>Long-term memory without turning recollection into authority.</h1>
+          <p class="lede">Lyra Memory is an architecture for durable associative context: what mattered, where it came from, how it changed, and where an agent must look again before acting.</p>
+          <p class="thesis">Memory remembers significance. Canonical systems prove reality.</p>
+          <div class="hero-links">
+            <a href="#architecture">See the architecture <span aria-hidden="true">→</span></a>
+            <a href="#adopt">Evaluate the model <span aria-hidden="true">→</span></a>
           </div>
         </div>
-        <aside class="thesis-card" aria-label="Core thesis">
-          <p class="mini-label">Core thesis</p>
-          <blockquote>Memory remembers significance. Canonical systems prove reality.</blockquote>
-          <p>A remembered statement can help an agent find the right place to look. It does not become permission, current configuration, or source of truth merely because it was remembered.</p>
+
+        <aside class="boundary" aria-label="Memory and authority boundary">
+          <div class="boundary-row">
+            <span class="boundary-term">Memory</span>
+            <span>Significance, cues, provenance, history</span>
+          </div>
+          <div class="boundary-not" aria-hidden="true">≠</div>
+          <div class="boundary-row">
+            <span class="boundary-term">Canonical owner</span>
+            <span>Current truth, permission, execution state</span>
+          </div>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="origin">
-      <div class="shell narrow">
-        <p class="section-kicker">Why this exists</p>
-        <h2>Persistence solved only half the problem.</h2>
-        <p>The project began after conversational context loss repeatedly broke continuity. A durable repository was created so important context could survive individual conversations. Later, the assistant failed to remember that the repository itself existed.</p>
-        <p>That failure exposed the more interesting problem: persistence alone is not enough. Useful memory must also be discoverable, provenance-aware, correctable, bounded, and clearly separated from whatever system currently owns the truth.</p>
-        <p>This is an engineering architecture, not a claim about consciousness or biological memory.</p>
+    <section class="section intro-section" id="origin">
+      <div class="shell section-grid">
+        <header class="section-heading">
+          <h2>Why persistence was not enough</h2>
+        </header>
+        <div class="section-body prose">
+          <p>The project began after conversational context loss repeatedly broke continuity. A durable repository was created so important context could survive individual conversations. Later, the assistant failed to remember that the repository itself existed.</p>
+          <p>That failure exposed the more useful problem: persistence alone does not make memory dependable. Memory also has to be discoverable, provenance-aware, correctable, bounded, and clearly separated from whatever system currently owns the truth.</p>
+          <p class="quiet">This is an engineering architecture, not a claim about consciousness or biological memory.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section alt" id="architecture">
-      <div class="shell">
-        <p class="section-kicker">Architecture</p>
-        <h2>Separate systems because they answer different questions.</h2>
-        <p class="section-intro">Lyra Memory is intentionally not a single mutable “brain.” The design keeps durable association, current truth, unresolved work, local navigation, identity, and execution authority from silently collapsing into one store.</p>
+    <section class="section" id="architecture">
+      <div class="shell section-grid">
+        <header class="section-heading">
+          <h2>Architecture</h2>
+          <p>Separate systems because they answer different questions.</p>
+        </header>
 
-        <div class="architecture" role="img" aria-label="Lyra Memory architecture: retrieve memory candidates, reconcile them with canonical owners, then act only under current authority. MemPalace, Session Continuity, and Identity Canon remain separate systems.">
-          <div class="flow-row">
-            <div class="arch-node accent">
-              <span class="node-label">Lyra Memory</span>
+        <div class="section-body">
+          <p class="section-intro">Lyra Memory is intentionally not a single mutable “brain.” Durable association, current truth, unfinished work, local navigation, identity, and execution authority have different owners and different lifecycles.</p>
+
+          <div class="authority-flow" role="img" aria-label="Retrieve relevant memory context, reconcile it with canonical owners, then act only under current authority.">
+            <div class="flow-step">
+              <span class="flow-label">Lyra Memory</span>
               <strong>Durable significance</strong>
               <small>Associative context · provenance · cues · lifecycle</small>
             </div>
-            <div class="arrow" aria-hidden="true">→</div>
-            <div class="arch-node">
-              <span class="node-label">Retrieve</span>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="flow-step">
+              <span class="flow-label">Retrieve</span>
               <strong>Candidate context</strong>
               <small>Relevant does not mean true, current, or authorized</small>
             </div>
-            <div class="arrow" aria-hidden="true">→</div>
-            <div class="arch-node authority">
-              <span class="node-label">Reconcile</span>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="flow-step owner-step">
+              <span class="flow-label">Reconcile</span>
               <strong>Canonical owners</strong>
-              <small>Repositories · APIs · databases · current policy · user direction</small>
+              <small>Repositories · APIs · databases · policy · user direction</small>
             </div>
-            <div class="arrow" aria-hidden="true">→</div>
-            <div class="arch-node action">
-              <span class="node-label">Act</span>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="flow-step action-step">
+              <span class="flow-label">Act</span>
               <strong>Current authority</strong>
               <small>Only after the owner and permission are known now</small>
             </div>
           </div>
 
-          <div class="companion-grid">
-            <div class="companion">
-              <strong>MemPalace</strong>
-              <span>Local semantic/index/navigation companion</span>
+          <h3 class="subheading">The layers stay separate</h3>
+          <dl class="layer-list">
+            <div>
+              <dt>Lyra Memory</dt>
+              <dd>Durable online associative context and significance.</dd>
             </div>
-            <div class="companion">
-              <strong>Session Continuity</strong>
-              <span>Unresolved execution recovery</span>
+            <div>
+              <dt>MemPalace</dt>
+              <dd>Local semantic, index, and navigation companion.</dd>
             </div>
-            <div class="companion">
-              <strong>Identity canon</strong>
-              <span>Who the agent is now, when applicable</span>
+            <div>
+              <dt>Session Continuity</dt>
+              <dd>Recovery for unresolved execution across context boundaries.</dd>
             </div>
-            <div class="companion">
-              <strong>Owning systems</strong>
-              <span>Current truth and execution authority</span>
+            <div>
+              <dt>Owning systems</dt>
+              <dd>Current truth, configuration, policy, and execution authority.</dd>
             </div>
-          </div>
-        </div>
+            <div>
+              <dt>Identity canon</dt>
+              <dd>Who the agent is now, when a separate identity owner applies.</dd>
+            </div>
+          </dl>
 
-        <div class="principles">
-          <article class="principle">
-            <span>01</span>
-            <h3>Authority separation</h3>
-            <p>Retrieval never grants permission. Material action requires a fresh read of the system that actually owns the decision, configuration, resource, or fact.</p>
-          </article>
-          <article class="principle">
-            <span>02</span>
-            <h3>Selective persistence</h3>
-            <p>Activity does not earn memory. Store durable significance rather than conversational exhaust, transient queues, or facts already better owned elsewhere.</p>
-          </article>
-          <article class="principle">
-            <span>03</span>
-            <h3>Provenance first</h3>
-            <p>A useful memory can point to where it came from, what kind of evidence supports it, how confident it is, and when it must be rechecked.</p>
-          </article>
-          <article class="principle">
-            <span>04</span>
-            <h3>Visible correction</h3>
-            <p>Prefer supersession or invalidation over silently rewriting history. The system should make it possible to understand what changed and why.</p>
-          </article>
-          <article class="principle">
-            <span>05</span>
-            <h3>Different stores, different jobs</h3>
-            <p>Memory, current owner truth, unfinished work, identity rules, documents, and skills have different lifecycles. Unifying them can simplify retrieval while weakening governance.</p>
-          </article>
-          <article class="principle">
-            <span>06</span>
-            <h3>Write scarcity</h3>
-            <p>Shared memory quality drops when every parallel worker can decide what becomes permanent. Broad read access and narrow curation are deliberate asymmetries.</p>
-          </article>
+          <h3 class="subheading">Design principles</h3>
+          <dl class="principle-list">
+            <div>
+              <dt>Authority separation</dt>
+              <dd>Retrieval never grants permission. Material action requires a fresh read of the system that owns the decision, configuration, resource, or fact.</dd>
+            </div>
+            <div>
+              <dt>Selective persistence</dt>
+              <dd>Activity does not earn memory. Store durable significance rather than conversational exhaust, transient queues, or facts already better owned elsewhere.</dd>
+            </div>
+            <div>
+              <dt>Provenance first</dt>
+              <dd>A useful memory can point to where it came from, what kind of evidence supports it, how confident it is, and when it must be rechecked.</dd>
+            </div>
+            <div>
+              <dt>Visible correction</dt>
+              <dd>Prefer supersession or invalidation over silently rewriting history, so later retrieval can explain what changed and why.</dd>
+            </div>
+            <div>
+              <dt>Different stores, different jobs</dt>
+              <dd>Memory, current owner truth, unfinished work, identity rules, documents, and skills should not become one mutable source of authority.</dd>
+            </div>
+            <div>
+              <dt>Write scarcity</dt>
+              <dd>Shared memory quality drops when every parallel worker can decide what becomes permanent. Broad read access and narrow curation are deliberate asymmetries.</dd>
+            </div>
+          </dl>
         </div>
       </div>
     </section>
 
     <section class="section" id="loop">
-      <div class="shell">
-        <p class="section-kicker">Operating loop</p>
-        <h2>Retrieval is the beginning of verification, not the end.</h2>
-        <ol class="loop">
-          <li><span>Retrieve</span><p>Find the smallest relevant durable context.</p></li>
-          <li><span>Reconcile</span><p>Follow provenance and consult the current canonical owner.</p></li>
-          <li><span>Act</span><p>Proceed only under current owner or user authority.</p></li>
-          <li><span>Reflect</span><p>Ask whether anything genuinely durable was learned.</p></li>
-          <li><span>Search / dedupe</span><p>Look for an equivalent active memory before adding another.</p></li>
-          <li><span>Write</span><p>Store the smallest useful memory with provenance.</p></li>
-          <li><span>Link / supersede / invalidate</span><p>Preserve relationships and correction history instead of accumulating contradictions.</p></li>
-          <li><span>Read back</span><p>Confirm what actually became durable.</p></li>
-        </ol>
+      <div class="shell section-grid">
+        <header class="section-heading">
+          <h2>The operating loop</h2>
+          <p>Retrieval begins verification. It does not finish it.</p>
+        </header>
+
+        <div class="section-body">
+          <ol class="operating-loop">
+            <li><strong>Retrieve</strong><span>Find the smallest relevant durable context.</span></li>
+            <li><strong>Reconcile</strong><span>Follow provenance and consult the current canonical owner.</span></li>
+            <li><strong>Act</strong><span>Proceed only under current owner or user authority.</span></li>
+            <li><strong>Reflect</strong><span>Ask whether anything genuinely durable was learned.</span></li>
+            <li><strong>Search and dedupe</strong><span>Look for an equivalent active memory before adding another.</span></li>
+            <li><strong>Write</strong><span>Store the smallest useful memory with provenance.</span></li>
+            <li><strong>Link, supersede, or invalidate</strong><span>Preserve relationships and correction history instead of accumulating contradictions.</span></li>
+            <li><strong>Read back</strong><span>Confirm what actually became durable.</span></li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <section class="section alt" id="examples">
-      <div class="shell">
-        <p class="section-kicker">Synthetic examples</p>
-        <h2>What the boundary looks like in practice.</h2>
-        <div class="example-grid">
-          <article class="example-card">
-            <p class="mini-label">Routing pointer</p>
-            <h3>Remember where truth lives, not a stale copy of truth.</h3>
-            <div class="memory-record">
-              <span>Memory</span>
-              <p>“Release policy for the Atlas service is owned by its deployment runbook. Re-read the runbook before any production action.”</p>
-              <small>Provenance → repository/runbook pointer</small>
+    <section class="section" id="examples">
+      <div class="shell section-grid">
+        <header class="section-heading">
+          <h2>What the boundary looks like</h2>
+          <p>Three synthetic examples.</p>
+        </header>
+
+        <div class="section-body example-list">
+          <article class="example">
+            <div class="example-label">Routing pointer</div>
+            <div>
+              <h3>Remember where truth lives, not a stale copy of truth.</h3>
+              <blockquote class="memory-quote">“Release policy for the Atlas service is owned by its deployment runbook. Re-read the runbook before any production action.”</blockquote>
+              <p class="example-meta">Provenance: repository/runbook pointer</p>
+              <p>A later agent retrieves the pointer, opens the current runbook, and follows today’s release gate. The memory never authorizes deployment.</p>
             </div>
-            <p class="result">A later agent retrieves the pointer, opens the current runbook, and follows today's release gate. The memory never authorizes deployment.</p>
           </article>
 
-          <article class="example-card">
-            <p class="mini-label">Supersession</p>
-            <h3>Keep the correction visible.</h3>
-            <div class="history-stack">
-              <div class="history old"><strong>v1 · superseded</strong><span>“Team review is on Tuesday.”</span></div>
-              <div class="history new"><strong>v2 · active</strong><span>“Team review moved to Wednesday after the process change.”</span></div>
+          <article class="example">
+            <div class="example-label">Supersession</div>
+            <div>
+              <h3>Keep the correction visible.</h3>
+              <div class="history-pair">
+                <p><span>Superseded</span> “Team review is on Tuesday.”</p>
+                <p><span>Active</span> “Team review moved to Wednesday after the process change.”</p>
+              </div>
+              <p>The old record remains understandable while retrieval defaults to the active replacement and its newer provenance.</p>
             </div>
-            <p class="result">The old record remains understandable, while retrieval defaults to the active replacement and its newer provenance.</p>
           </article>
 
-          <article class="example-card">
-            <p class="mini-label">Associative cue</p>
-            <h3>A tiny cue can recover a richer memory.</h3>
-            <div class="cue">“paper crane beside the green terminal”</div>
-            <p class="result">That oddly specific synthetic cue can lead back to a concise incident lesson and its evidence pointer. The raw meeting transcript does not need to become memory.</p>
+          <article class="example">
+            <div class="example-label">Associative cue</div>
+            <div>
+              <h3>A tiny cue can recover a richer memory.</h3>
+              <p class="cue">“paper crane beside the green terminal”</p>
+              <p>That oddly specific synthetic cue can lead back to a concise incident lesson and its evidence pointer. The raw meeting transcript does not need to become memory.</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
     <section class="section" id="compare">
-      <div class="shell">
-        <p class="section-kicker">Comparison research</p>
-        <h2>Different systems optimize for different things.</h2>
-        <p class="section-intro">This is not a ranking. The descriptions below summarize current first-party documentation reviewed on September 22, 2026. Product capabilities change; follow the source links for current behavior.</p>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>System</th>
-                <th>Primary emphasis in current docs</th>
-                <th>Memory / retrieval shape</th>
-                <th>Useful contrast with this model</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>ChatGPT Memory</th>
-                <td>Personalized continuity using relevant context from chats and other available sources.</td>
-                <td>Saved/derived memory and relevant-source use are managed as product features, with user-facing controls that vary by plan and workspace.</td>
-                <td>Lyra Memory is a developer architecture centered on explicit provenance, owner reconciliation, and execution-authority boundaries rather than a general personalization feature.</td>
-              </tr>
-              <tr>
-                <th>Mem0</th>
-                <td>A memory layer that extracts durable facts and retrieves relevant memories without replaying full transcripts.</td>
-                <td>Current retrieval combines semantic, keyword, entity, and temporal signals; Mem0 Platform also provides built-in graph memory.</td>
-                <td>Mem0 has a more mature retrieval ecosystem. Lyra Memory currently prioritizes curation, provenance, correction lineage, and owner boundaries before adding richer retrieval machinery.</td>
-              </tr>
-              <tr>
-                <th>Zep / Graphiti</th>
-                <td>Temporal context graphs with entities, relationships, facts, and time-aware validity.</td>
-                <td>Graphiti uses a bi-temporal knowledge-graph model and fact invalidation; Zep operates that model as managed agent memory at larger scale.</td>
-                <td>Its temporal graph model is substantially richer than Lyra Memory's current association model. Lyra Memory's differentiating emphasis is governance across separate owners, not graph sophistication.</td>
-              </tr>
-              <tr>
-                <th>Letta</th>
-                <td>Persistent, stateful agents with memory as part of the agent runtime.</td>
-                <td>Persistent editable memory blocks can remain in context, be shared across agents, and be attached or detached; archival memory is searchable outside immediate context.</td>
-                <td>Letta provides a much more developed persistent-agent runtime. Lyra Memory is intentionally a memory/context service that does not try to own the whole agent runtime.</td>
-              </tr>
-              <tr>
-                <th>OpenViking</th>
-                <td>A context database that unifies resources, memories, and skills in a navigable virtual filesystem.</td>
-                <td>Uses resource/memory/skill context types, stable virtual paths, layered summaries, semantic processing, and recursive retrieval.</td>
-                <td>OpenViking deliberately unifies a broader context universe. Lyra Memory deliberately leaves documents, skills, identity, unfinished execution, and owner truth with separate systems.</td>
-              </tr>
-              <tr>
-                <th>LangMem</th>
-                <td>Tools for agents to learn and adapt through long-term memory.</td>
-                <td>Models semantic, episodic, and procedural memory; supports hot-path and background formation and storage-agnostic core APIs.</td>
-                <td>LangMem offers richer memory-formation primitives. Lyra Memory focuses on governance questions around what deserves persistence, who may write it, and what must still be verified elsewhere.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="shell section-grid section-grid-wide">
+        <header class="section-heading">
+          <h2>How this differs from other approaches</h2>
+          <p>This is a comparison of optimization targets, not a ranking.</p>
+        </header>
 
-        <div class="sources">
-          <h3>Primary sources</h3>
-          <ul>
-            <li><a href="https://help.openai.com/en/articles/8590148-memory-faq">OpenAI — Memory in ChatGPT</a></li>
-            <li><a href="https://docs.mem0.ai/core-concepts/how-it-works">Mem0 — How Mem0 Works</a> and <a href="https://docs.mem0.ai/platform/features/graph-memory">Graph Memory</a></li>
-            <li><a href="https://help.getzep.com/v2/graphiti/getting-started/overview">Zep — Graphiti overview</a> and <a href="https://help.getzep.com/facts">Facts / temporal invalidation</a></li>
-            <li><a href="https://docs.letta.com/">Letta documentation</a></li>
-            <li><a href="https://www.openviking.ai/docs">OpenViking documentation</a></li>
-            <li><a href="https://langchain-ai.github.io/langmem/concepts/conceptual_guide/">LangMem — conceptual guide</a></li>
-          </ul>
-          <p>See <a href="docs/RESEARCH-SOURCES.md">the research-source note</a> for the claim boundaries used on this page.</p>
+        <div class="section-body">
+          <p class="section-intro">The descriptions below summarize first-party documentation reviewed on September 22, 2026. Product capabilities change; follow the source links for current behavior.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>System</th>
+                  <th>Primary emphasis in current docs</th>
+                  <th>Memory / retrieval shape</th>
+                  <th>Useful contrast with this model</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>ChatGPT Memory</th>
+                  <td>Personalized continuity using relevant context from chats and other available sources.</td>
+                  <td>Saved or derived memory and relevant-source use are managed as product features, with controls that vary by plan and workspace.</td>
+                  <td>Lyra Memory is a developer architecture centered on explicit provenance, owner reconciliation, and execution-authority boundaries rather than general personalization.</td>
+                </tr>
+                <tr>
+                  <th>Mem0</th>
+                  <td>A memory layer that extracts durable facts and retrieves relevant memories without replaying full transcripts.</td>
+                  <td>Current retrieval combines semantic, keyword, entity, and temporal signals; Mem0 Platform also provides built-in graph memory.</td>
+                  <td>Mem0 has a more mature retrieval ecosystem. Lyra Memory currently prioritizes curation, provenance, correction lineage, and owner boundaries before richer retrieval machinery.</td>
+                </tr>
+                <tr>
+                  <th>Zep / Graphiti</th>
+                  <td>Temporal context graphs with entities, relationships, facts, and time-aware validity.</td>
+                  <td>Graphiti uses a bi-temporal knowledge-graph model and fact invalidation; Zep operates that model as managed agent memory at larger scale.</td>
+                  <td>Its temporal graph model is substantially richer than Lyra Memory’s current association model. Lyra Memory’s emphasis is governance across separate owners, not graph sophistication.</td>
+                </tr>
+                <tr>
+                  <th>Letta</th>
+                  <td>Persistent, stateful agents with memory as part of the agent runtime.</td>
+                  <td>Persistent editable memory blocks can remain in context, be shared across agents, and be attached or detached; archival memory is searchable outside immediate context.</td>
+                  <td>Letta provides a much more developed persistent-agent runtime. Lyra Memory is intentionally a memory/context service that does not try to own the whole agent runtime.</td>
+                </tr>
+                <tr>
+                  <th>OpenViking</th>
+                  <td>A context database that unifies resources, memories, and skills in a navigable virtual filesystem.</td>
+                  <td>Uses resource, memory, and skill context types, stable virtual paths, layered summaries, semantic processing, and recursive retrieval.</td>
+                  <td>OpenViking deliberately unifies a broader context universe. Lyra Memory deliberately leaves documents, skills, identity, unfinished execution, and owner truth with separate systems.</td>
+                </tr>
+                <tr>
+                  <th>LangMem</th>
+                  <td>Tools for agents to learn and adapt through long-term memory.</td>
+                  <td>Models semantic, episodic, and procedural memory; supports hot-path and background formation and storage-agnostic core APIs.</td>
+                  <td>LangMem offers richer memory-formation primitives. Lyra Memory focuses on governance around what deserves persistence, who may write it, and what must still be verified elsewhere.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="sources">
+            <h3>Primary sources</h3>
+            <ul>
+              <li><a href="https://help.openai.com/en/articles/8590148-memory-faq">OpenAI — Memory in ChatGPT</a></li>
+              <li><a href="https://docs.mem0.ai/core-concepts/how-it-works">Mem0 — How Mem0 Works</a> and <a href="https://docs.mem0.ai/platform/features/graph-memory">Graph Memory</a></li>
+              <li><a href="https://help.getzep.com/v2/graphiti/getting-started/overview">Zep — Graphiti overview</a> and <a href="https://help.getzep.com/facts">Facts / temporal invalidation</a></li>
+              <li><a href="https://docs.letta.com/">Letta documentation</a></li>
+              <li><a href="https://www.openviking.ai/docs">OpenViking documentation</a></li>
+              <li><a href="https://langchain-ai.github.io/langmem/concepts/conceptual_guide/">LangMem — conceptual guide</a></li>
+            </ul>
+            <p>See <a href="docs/RESEARCH-SOURCES.md">the research-source note</a> for the claim boundaries used on this page.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="adopt">
-      <div class="shell">
-        <p class="section-kicker">Should I use this?</p>
-        <h2>Decide what “memory” is allowed to mean before you add more of it.</h2>
-        <p class="section-intro">Lyra Memory is a design pattern with tradeoffs, not a default requirement for every agent.</p>
+    <section class="section" id="adopt">
+      <div class="shell section-grid">
+        <header class="section-heading">
+          <h2>Should I use this?</h2>
+          <p>Decide what “memory” is allowed to mean before you add more of it.</p>
+        </header>
 
-        <div class="questions">
-          <details open>
-            <summary>Truth and authority</summary>
-            <ul>
-              <li>What system owns the actual truth behind something the agent remembers?</li>
-              <li>Can memory ever authorize an action, or is it only context?</li>
-              <li>Which decisions require a fresh owner read before execution?</li>
-            </ul>
-          </details>
-          <details>
-            <summary>Write governance</summary>
-            <ul>
-              <li>Who can create durable memories?</li>
-              <li>Do all agents need write access, or can most be read-only?</li>
-              <li>How are duplicates, contradictions, and obsolete memories handled?</li>
-            </ul>
-          </details>
-          <details>
-            <summary>Privacy and boundaries</summary>
-            <ul>
-              <li>What information should never enter the generic memory store?</li>
-              <li>Do health, finance, credentials, children, legal, or other sensitive domains need separate owners?</li>
-              <li>What is the deletion, retention, export, and audit model?</li>
-            </ul>
-          </details>
-          <details>
-            <summary>Representation and retrieval</summary>
-            <ul>
-              <li>What is a memory versus a document, skill, identity rule, configuration value, or unfinished task?</li>
-              <li>Do you actually need embeddings or a graph yet?</li>
-              <li>Will the design remain manageable at 100, 10,000, or 1,000,000 memories?</li>
-            </ul>
-          </details>
-          <details>
-            <summary>Failure behavior</summary>
-            <ul>
-              <li>What happens when memory is unavailable?</li>
-              <li>Can the agent continue safely by reconstructing from canonical owners?</li>
-              <li>Does a high retrieval score accidentally become a trust score?</li>
-            </ul>
-          </details>
-        </div>
+        <div class="section-body">
+          <p class="section-intro">Lyra Memory is a design pattern with tradeoffs, not a default requirement for every agent.</p>
 
-        <div class="fit-grid">
-          <article>
-            <h3>A simpler memory store may fit better when…</h3>
-            <p>You primarily need a small set of preferences or facts and do not have multiple authority domains to reconcile.</p>
-          </article>
-          <article>
-            <h3>Ordinary RAG may fit better when…</h3>
-            <p>Your real problem is retrieving passages from documents rather than preserving curated conclusions or durable associative context.</p>
-          </article>
-          <article>
-            <h3>A temporal graph may fit better when…</h3>
-            <p>Relationships, event ordering, validity intervals, and evolving facts are the center of the problem.</p>
-          </article>
-          <article>
-            <h3>A persistent-agent runtime may fit better when…</h3>
-            <p>You want memory tightly integrated with an agent's evolving state, context management, tools, and long-lived runtime.</p>
-          </article>
-          <article>
-            <h3>No long-term memory may fit better when…</h3>
-            <p>The task is stateless, the privacy cost is high, or current canonical data is cheap enough to reconstruct every time.</p>
-          </article>
+          <div class="question-groups">
+            <section>
+              <h3>Truth and authority</h3>
+              <ul>
+                <li>What system owns the actual truth behind something the agent remembers?</li>
+                <li>Can memory ever authorize an action, or is it only context?</li>
+                <li>Which decisions require a fresh owner read before execution?</li>
+              </ul>
+            </section>
+            <section>
+              <h3>Write governance</h3>
+              <ul>
+                <li>Who can create durable memories?</li>
+                <li>Do all agents need write access, or can most be read-only?</li>
+                <li>How are duplicates, contradictions, and obsolete memories handled?</li>
+              </ul>
+            </section>
+            <section>
+              <h3>Privacy and boundaries</h3>
+              <ul>
+                <li>What information should never enter the generic memory store?</li>
+                <li>Do health, finance, credentials, children, legal, or other sensitive domains need separate owners?</li>
+                <li>What is the deletion, retention, export, and audit model?</li>
+              </ul>
+            </section>
+            <section>
+              <h3>Representation and retrieval</h3>
+              <ul>
+                <li>What is a memory versus a document, skill, identity rule, configuration value, or unfinished task?</li>
+                <li>Do you actually need embeddings or a graph yet?</li>
+                <li>Will the design remain manageable at 100, 10,000, or 1,000,000 memories?</li>
+              </ul>
+            </section>
+            <section>
+              <h3>Failure behavior</h3>
+              <ul>
+                <li>What happens when memory is unavailable?</li>
+                <li>Can the agent continue safely by reconstructing from canonical owners?</li>
+                <li>Does a high retrieval score accidentally become a trust score?</li>
+              </ul>
+            </section>
+          </div>
+
+          <h3 class="subheading">A different architecture may fit better</h3>
+          <dl class="alternative-list">
+            <div>
+              <dt>A simpler memory store</dt>
+              <dd>When you mainly need a small set of preferences or facts and do not have multiple authority domains to reconcile.</dd>
+            </div>
+            <div>
+              <dt>Ordinary RAG</dt>
+              <dd>When the real problem is retrieving passages from documents rather than preserving curated conclusions or durable associative context.</dd>
+            </div>
+            <div>
+              <dt>A temporal graph</dt>
+              <dd>When relationships, event ordering, validity intervals, and evolving facts are the center of the problem.</dd>
+            </div>
+            <div>
+              <dt>A persistent-agent runtime</dt>
+              <dd>When memory should be tightly integrated with evolving agent state, context management, tools, and a long-lived runtime.</dd>
+            </div>
+            <div>
+              <dt>No long-term memory</dt>
+              <dd>When the task is stateless, the privacy cost is high, or current canonical data is cheap enough to reconstruct every time.</dd>
+            </div>
+          </dl>
         </div>
       </div>
     </section>
 
     <section class="section" id="security">
-      <div class="shell">
-        <p class="section-kicker">Privacy & security</p>
-        <h2>Memory should be easy to read and hard to write badly.</h2>
-        <div class="security-grid">
-          <article>
-            <h3>Safe default: route sensitive domains elsewhere</h3>
-            <p>A generic memory layer should not become the default warehouse for medical records, financial records, credentials, private communications, child data, legal records, or other high-sensitivity material. It can remember a safe routing pointer without copying the underlying data.</p>
-          </article>
-          <article>
-            <h3>Current access model</h3>
+      <div class="shell section-grid">
+        <header class="section-heading">
+          <h2>Privacy and security</h2>
+          <p>Easy to read. Hard to write badly.</p>
+        </header>
+
+        <div class="section-body security-list">
+          <section>
+            <h3>Route sensitive domains elsewhere by default.</h3>
+            <p>A generic memory layer should not become the warehouse for medical records, financial records, credentials, private communications, child data, legal records, or other high-sensitivity material. It can remember a safe routing pointer without copying the underlying data.</p>
+          </section>
+          <section>
+            <h3>Keep writing scarcer than reading.</h3>
             <p>The private prototype uses three governance profiles: <strong>read</strong>, <strong>curated-write</strong>, and <strong>no-generic-memory</strong>. Most workers should read; a smaller curator set may write; sensitive-domain agents can be excluded entirely.</p>
-          </article>
-          <article>
-            <h3>Important present limitation</h3>
-            <p>Those role mappings are not yet a complete cryptographic per-agent security boundary in the current prototype. They are governance and routing rules until trusted role identity or separated client/tool surfaces enforce them end to end.</p>
-          </article>
-          <article>
-            <h3>Failure should degrade safely</h3>
+          </section>
+          <section>
+            <h3>Do not overstate the current enforcement.</h3>
+            <p>Those role mappings are not yet a complete cryptographic per-agent security boundary in the current prototype. They remain governance and routing rules until trusted role identity or separated client/tool surfaces enforce them end to end.</p>
+          </section>
+          <section>
+            <h3>Fail back to canonical truth.</h3>
             <p>If memory is unavailable, the architecture should fall back to canonical owners and explicit user input rather than weakening authorization or inventing remembered state.</p>
-          </article>
+          </section>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="status">
-      <div class="shell">
-        <p class="section-kicker">Maturity</p>
-        <h2>Architecture first. Reference implementation later.</h2>
+    <section class="section" id="status">
+      <div class="shell section-grid">
+        <header class="section-heading">
+          <h2>Current maturity</h2>
+          <p>Architecture first. Reference implementation later.</p>
+        </header>
 
-        <div class="status-grid">
-          <article class="status-card">
-            <span class="status implemented">Implemented privately</span>
-            <ul>
-              <li>Structured durable records with provenance pointers, lifecycle state, retrieval cues, and explicit associations.</li>
-              <li>Narrow search/get/create/supersede/invalidate/link memory interface.</li>
-              <li>Deterministic text, cue, tag, and active-status retrieval baseline.</li>
-              <li>Sensitive-domain exclusions and curated-write governance.</li>
-              <li>Fresh-conversation retrieval demonstrated in a private deployment.</li>
-            </ul>
-          </article>
+        <div class="section-body">
+          <div class="maturity-columns">
+            <section>
+              <p class="status-label implemented">Implemented privately</p>
+              <ul>
+                <li>Structured durable records with provenance pointers, lifecycle state, retrieval cues, and explicit associations.</li>
+                <li>Narrow search, get, create, supersede, invalidate, and link operations.</li>
+                <li>Deterministic text, cue, tag, and active-status retrieval baseline.</li>
+                <li>Sensitive-domain exclusions and curated-write governance.</li>
+                <li>Fresh-conversation retrieval demonstrated in a private deployment.</li>
+              </ul>
+            </section>
 
-          <article class="status-card">
-            <span class="status experimental">Experimental / not yet claimed</span>
-            <ul>
-              <li>Hard cryptographic enforcement of every per-agent access profile.</li>
-              <li>Vector embeddings as the production retrieval baseline.</li>
-              <li>Large-corpus retrieval or latency claims.</li>
-              <li>A stable public portable-contract specification.</li>
-              <li>A supported public reference implementation.</li>
-            </ul>
-          </article>
-        </div>
+            <section>
+              <p class="status-label experimental">Experimental or not yet claimed</p>
+              <ul>
+                <li>Hard cryptographic enforcement of every per-agent access profile.</li>
+                <li>Vector embeddings as the production retrieval baseline.</li>
+                <li>Large-corpus retrieval or latency claims.</li>
+                <li>A stable public portable-contract specification.</li>
+                <li>A supported public reference implementation.</li>
+              </ul>
+            </section>
+          </div>
 
-        <div class="roadmap">
-          <h3>Gate to a public reference implementation</h3>
-          <ol>
+          <h3 class="subheading">Gate to a public reference implementation</h3>
+          <ol class="roadmap">
             <li>Stabilize the provider-neutral record and lifecycle contracts.</li>
             <li>Publish a threat model and enforced read/curator separation.</li>
             <li>Define deletion, retention, export, and correction semantics precisely.</li>
             <li>Build synthetic fixtures and conformance tests with no private data.</li>
-            <li>Evaluate retrieval quality and scale before selecting optional vector/graph machinery.</li>
-            <li>Prove a clean public implementation boundary and scrub history/configuration.</li>
+            <li>Evaluate retrieval quality and scale before selecting optional vector or graph machinery.</li>
+            <li>Prove a clean public implementation boundary and scrub history and configuration.</li>
             <li>Make an explicit licensing decision under the appropriate authority.</li>
           </ol>
           <p><a href="docs/REFERENCE-IMPLEMENTATION-READINESS.md">Read the readiness checklist →</a></p>
-        </div>
 
-        <div class="not-public">
-          <h3>What is deliberately not public yet</h3>
-          <p>The implementation owner is the private <a href="https://github.com/zevarix/lyra-memory"><code>zevarix/lyra-memory</code></a> repository. Its source and operational evidence remain access-restricted. The current deployment implementation, operational policy, real memory contents, authentication identities, deployment configuration, private acceptance evidence, and private project topology are not part of this repository.</p>
-          <p>The conceptual model should remain understandable without inheriting every implementation choice from the private deployment.</p>
+          <aside class="withheld">
+            <h3>What is deliberately not public yet</h3>
+            <p>The implementation owner is the private <a href="https://github.com/zevarix/lyra-memory"><code>zevarix/lyra-memory</code></a> repository. Its source and operational evidence remain access-restricted.</p>
+            <p>The current deployment implementation, operational policy, real memory contents, authentication identities, deployment configuration, private acceptance evidence, and private project topology are not part of this repository. The conceptual model should remain understandable without inheriting every implementation choice from the private deployment.</p>
+          </aside>
         </div>
       </div>
     </section>
 
-    <section class="section closing">
-      <div class="shell narrow">
-        <p class="section-kicker">The question to carry forward</p>
-        <h2>Are you trying to remember more — or remember fewer things more reliably?</h2>
-        <p>Long-term memory becomes safer and more useful when a system can explain why something was kept, where it came from, how it can be corrected, and which current owner must still be consulted before action.</p>
-        <a class="button primary" href="https://github.com/zevarix/lyra-memory-architecture">View the public repository</a>
+    <section class="closing">
+      <div class="shell closing-inner">
+        <p>Before giving an AI long-term memory, decide what remembering is allowed to mean.</p>
+        <a href="https://github.com/zevarix/lyra-memory-architecture">View the public repository <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>
