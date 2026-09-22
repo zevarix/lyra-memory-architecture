@@ -1,17 +1,18 @@
 :root {
-  --bg: #091123;
-  --bg-soft: #0f1936;
-  --surface: #121d3d;
-  --text: #f0f3ff;
-  --muted: #bac5e0;
-  --quiet: #8f9bc2;
-  --line: #24345f;
-  --line-strong: #3a4f86;
-  --accent: #90c0ff;
-  --accent-strong: #c0f0ff;
-  --violet: #8180f3;
-  --violet-deep: #5030b0;
-  --ice: #e0e8ff;
+  /* Measured from the Product-selected Lyra icon source. */
+  --bg: #0a102e;
+  --bg-soft: #0e1435;
+  --surface: #112365;
+  --text: #f2f5ff;
+  --muted: #bac6e5;
+  --quiet: #909dc8;
+  --line: #242475;
+  --line-strong: #313fa0;
+  --accent: #7ba2f6;
+  --accent-strong: #cde1fd;
+  --violet: #8a75f6;
+  --violet-deep: #352b94;
+  --ice: #dbe8ff;
   --max: 1160px;
   --measure: 72ch;
 }
@@ -50,7 +51,7 @@ a:hover {
 }
 
 ::selection {
-  background: rgba(129, 128, 243, .42);
+  background: rgba(53, 43, 148, .62);
   color: #ffffff;
 }
 
@@ -71,7 +72,7 @@ code {
   z-index: 1000;
   padding: .7rem 1rem;
   background: var(--accent-strong);
-  color: #091123;
+  color: #0a102e;
 }
 
 .skip-link:focus {
@@ -87,8 +88,8 @@ code {
   position: sticky;
   top: 0;
   z-index: 50;
-  border-bottom: 1px solid rgba(144, 192, 255, .14);
-  background: rgba(9, 17, 35, .94);
+  border-bottom: 1px solid rgba(123, 162, 246, .16);
+  background: rgba(10, 16, 46, .94);
   backdrop-filter: blur(14px);
 }
 
@@ -118,7 +119,6 @@ code {
   height: 32px;
   display: block;
   border-radius: 8px;
-  box-shadow: 0 0 0 1px rgba(144, 192, 255, .22);
 }
 
 nav {
@@ -143,7 +143,7 @@ nav a:hover {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
   gap: clamp(3rem, 6vw, 6rem);
   align-items: center;
 }
@@ -155,18 +155,16 @@ nav a:hover {
 .hero-side {
   align-self: center;
   justify-self: end;
-  width: min(100%, 320px);
+  width: min(100%, 360px);
 }
 
 .hero-emblem {
-  width: 256px;
-  height: 256px;
+  width: min(100%, 320px);
+  height: auto;
+  aspect-ratio: 1;
   display: block;
-  margin: 0 auto 1.3rem;
+  margin: 0 auto 1.35rem;
   object-fit: cover;
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 58%, rgba(0, 0, 0, .96) 70%, transparent 88%);
-  mask-image: radial-gradient(circle at 50% 50%, #000 58%, rgba(0, 0, 0, .96) 70%, transparent 88%);
-  filter: drop-shadow(0 0 30px rgba(144, 192, 255, .14));
 }
 
 .hero-label {
@@ -207,7 +205,7 @@ h3 {
 .lede {
   max-width: 720px;
   margin: 1.75rem 0 0;
-  color: #d6def3;
+  color: var(--ice);
   font-size: clamp(1.12rem, 1.6vw, 1.35rem);
 }
 
@@ -230,7 +228,7 @@ h3 {
 .hero-links a {
   font-weight: 650;
   text-decoration: none;
-  border-bottom: 1px solid rgba(144, 192, 255, .45);
+  border-bottom: 1px solid rgba(123, 162, 246, .5);
 }
 
 .boundary {
@@ -290,7 +288,7 @@ h3 {
 }
 
 .section-heading h2 {
-  color: #f6f7ff;
+  color: var(--text);
 }
 
 .section-body {
@@ -373,13 +371,13 @@ h3 {
 }
 
 .action-step strong {
-  color: #b8b7ff;
+  color: var(--violet);
 }
 
 .flow-arrow {
   display: grid;
   place-items: center;
-  color: #64748a;
+  color: var(--quiet);
   font-size: 1.25rem;
 }
 
@@ -497,7 +495,7 @@ h3 {
   margin: 1.25rem 0;
   padding: .85rem 0 .85rem 1rem;
   border-left: 2px solid var(--accent);
-  color: #dce8f8;
+  color: var(--ice);
 }
 
 .history-pair {
@@ -571,7 +569,7 @@ tbody th {
 }
 
 tbody td {
-  color: #c8d0db;
+  color: var(--muted);
 }
 
 tbody tr:last-child th,
@@ -676,7 +674,7 @@ tbody tr:last-child td {
 }
 
 .status-label.experimental {
-  color: #b8b7ff;
+  color: var(--violet);
 }
 
 .roadmap {
@@ -729,7 +727,7 @@ tbody tr:last-child td {
 .closing a {
   font-weight: 650;
   text-decoration: none;
-  border-bottom: 1px solid rgba(144, 192, 255, .45);
+  border-bottom: 1px solid rgba(123, 162, 246, .5);
 }
 
 footer {
