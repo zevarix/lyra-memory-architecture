@@ -40,14 +40,14 @@ Lyra Memory is durable associative context/significance. It does not replace:
 
 - current canonical repositories, APIs, databases, policy, or user direction;
 - Session Continuity for unresolved execution recovery;
-- MemPalace for local semantic/index/navigation support;
+- MemPalace for local semantic/index/navigation across durable memory and canonical-source pointers;
 - identity canon for current agent identity.
 
 A retrieved memory is context. It is never execution authority.
 
 ## Current maturity
 
-The private prototype proves the narrow memory lifecycle, provenance, associations, correction history, deterministic retrieval baseline, and cross-conversation retrieval. Hard role-bound runtime enforcement, vector/graph evaluation at scale, stable public contracts, and a public reference implementation are not claimed as complete.
+The private prototype proves the narrow memory lifecycle, provenance, associations, correction history, deterministic retrieval baseline, and cross-conversation retrieval. Hard role-bound runtime enforcement, vector/graph evaluation at scale, the full Lyra Memory ↔ MemPalace bridge/reconciliation contract, stable public contracts, and a public reference implementation are not claimed as complete.
 
 See:
 

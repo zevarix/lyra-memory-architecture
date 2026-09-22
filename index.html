@@ -83,7 +83,8 @@
         <div class="section-body prose">
           <p>The project began after conversational context loss repeatedly broke continuity. A durable repository was created so important context could survive individual conversations. Later, the assistant failed to remember that the repository itself existed.</p>
           <p>That failure exposed the more useful problem: persistence alone does not make memory dependable. Memory also has to be discoverable, provenance-aware, correctable, bounded, and clearly separated from whatever system currently owns the truth.</p>
-          <p class="quiet">This is an engineering architecture, not a claim about consciousness or biological memory.</p>
+          <p>One design inspiration came from an ordinary human experience: something can be out of mind without feeling gone forever, and a small cue—a smell, a place, a phrase, an object—can suddenly bring an old memory back into focus. Lyra Memory does not try to reproduce biological memory; it borrows the engineering lesson that recall can begin from an indirect associative cue rather than an exact lookup key.</p>
+          <p class="quiet">This is an engineering architecture and retrieval metaphor, not a claim about consciousness or biological equivalence.</p>
         </div>
       </div>
     </section>
@@ -132,7 +133,7 @@
             </div>
             <div>
               <dt>MemPalace</dt>
-              <dd>Local semantic, index, and navigation companion.</dd>
+              <dd>Local semantic, index, and navigation companion over durable memory and canonical-source pointers.</dd>
             </div>
             <div>
               <dt>Session Continuity</dt>
@@ -147,6 +148,69 @@
               <dd>Who the agent is now, when a separate identity owner applies.</dd>
             </div>
           </dl>
+
+          <h3 class="subheading" id="mempalace">Why keep both Lyra Memory and MemPalace?</h3>
+          <p class="section-intro">They answer different retrieval questions. Lyra Memory preserves a small set of durable, governed conclusions and associations; MemPalace helps discover related context and the sources worth opening next.</p>
+
+          <dl class="layer-list">
+            <div>
+              <dt>Lyra Memory asks</dt>
+              <dd>What was deliberately worth remembering, why did it matter, where did it come from, and has that remembered conclusion been corrected?</dd>
+            </div>
+            <div>
+              <dt>MemPalace asks</dt>
+              <dd>Given the task—or even a weak, indirect cue—what semantically related memory, decision, document, repository pointer, or other context should I inspect?</dd>
+            </div>
+            <div>
+              <dt>Together</dt>
+              <dd>Memory supplies durable significance and provenance; the semantic/index companion improves discovery across that memory and stronger canonical sources without becoming the owner of either.</dd>
+            </div>
+            <div>
+              <dt>When one is unavailable</dt>
+              <dd>Continue from the layers that remain available and from canonical owners. Losing a memory or indexing layer must never weaken verification or execution authority.</dd>
+            </div>
+          </dl>
+
+          <p class="quiet">The exact online/offline bridge and bidirectional reconciliation contract between Lyra Memory and MemPalace is still a maturity item. This page describes the responsibility split, not a finished synchronization protocol.</p>
+
+          <figure class="memory-stack" aria-labelledby="memory-stack-title">
+            <figcaption id="memory-stack-title">
+              <strong>Composable memory stack</strong>
+              <span>Combine systems by responsibility, not by duplicating the same fact everywhere. The arrows show one common path; real systems may span more than one role.</span>
+            </figcaption>
+
+            <div class="memory-stack-flow">
+              <div class="memory-stack-stage">
+                <span class="memory-stack-kicker">Formation</span>
+                <strong>Extract or consolidate candidate memory</strong>
+                <small>Examples: LangMem, Mem0</small>
+              </div>
+              <span class="memory-stack-arrow" aria-hidden="true">→</span>
+              <div class="memory-stack-stage memory-stack-stage--primary">
+                <span class="memory-stack-kicker">Durable owner</span>
+                <strong>Governed significance and lifecycle</strong>
+                <small>Example: Lyra Memory</small>
+              </div>
+              <span class="memory-stack-arrow" aria-hidden="true">→</span>
+              <div class="memory-stack-stage">
+                <span class="memory-stack-kicker">Discovery</span>
+                <strong>Turn exact or associative cues into useful candidates</strong>
+                <small>Semantic, index, graph, or temporal retrieval · examples: MemPalace, Graphiti / Zep, Mem0</small>
+              </div>
+              <span class="memory-stack-arrow" aria-hidden="true">→</span>
+              <div class="memory-stack-stage">
+                <span class="memory-stack-kicker">Runtime context</span>
+                <strong>Put selected context where the agent can use it</strong>
+                <small>Example: Letta memory/runtime state</small>
+              </div>
+            </div>
+
+            <div class="memory-stack-evidence">
+              <span class="memory-stack-kicker">Evidence and authority stay outside the memory pipeline</span>
+              <strong>Canonical repositories · APIs · databases · current policy · explicit user direction</strong>
+              <small>OpenViking spans several context roles; ChatGPT Memory is product-level personalization. Systems may overlap roles, so composition requires an explicit owner for each memory class.</small>
+            </div>
+          </figure>
 
           <h3 class="subheading">Design principles</h3>
           <dl class="principle-list">
@@ -236,7 +300,7 @@
             <div>
               <h3>A tiny cue can recover a richer memory.</h3>
               <p class="cue">“paper crane beside the green terminal”</p>
-              <p>That oddly specific synthetic cue can lead back to a concise incident lesson and its evidence pointer. The raw meeting transcript does not need to become memory.</p>
+              <p>That oddly specific synthetic cue can lead back to a concise incident lesson and its evidence pointer. It expresses the same design intuition as a smell unexpectedly bringing an old human memory back into focus: retrieval can start with association rather than an exact title or key. The raw meeting transcript does not need to become memory.</p>
             </div>
           </article>
         </div>
@@ -303,6 +367,68 @@
               </tbody>
             </table>
           </div>
+
+          <h3 class="subheading">Memory systems can be composed</h3>
+          <p class="section-intro">The useful unit is often a stack of different responsibilities, not one product that owns everything. These are architectural composition patterns, not claims that every pair below ships with a prebuilt integration.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Composition</th>
+                  <th>Useful role split</th>
+                  <th>When it makes sense</th>
+                  <th>Boundary to preserve</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Lyra Memory + MemPalace</th>
+                  <td>Governed durable significance + local semantic/index/navigation.</td>
+                  <td>When a small curated memory layer should remain understandable while broader local discovery spans memory and canonical sources.</td>
+                  <td>MemPalace is a discovery companion, not a second canonical memory owner. Bridge/reconciliation mechanics still need explicit proof.</td>
+                </tr>
+                <tr>
+                  <th>Lyra Memory + LangMem</th>
+                  <td>Governed durable store + memory formation, extraction, consolidation, or prompt-learning primitives.</td>
+                  <td>When richer automated formation is useful but storage/lifecycle/write policy belongs to a separate governed owner.</td>
+                  <td>LangMem's core can operate without a required storage layer. Treat extracted memories as candidates until the governed write path accepts them.</td>
+                </tr>
+                <tr>
+                  <th>Lyra Memory + Graphiti / Zep</th>
+                  <td>Governed significance/provenance + temporal entity/relationship graph and hybrid retrieval.</td>
+                  <td>When changing relationships, fact validity, or point-in-time reasoning matter more than a simple association model can express.</td>
+                  <td>Choose which layer owns changing domain facts. Prefer a derived graph or durable pointers over independently writable duplicate truth.</td>
+                </tr>
+                <tr>
+                  <th>Lyra Memory + Mem0</th>
+                  <td>Curated governance/authority-sensitive memory + broad extraction and semantic/keyword/entity/temporal retrieval.</td>
+                  <td>When conversational memory breadth and retrieval machinery are useful, but a smaller subset needs stricter provenance and write governance.</td>
+                  <td>Avoid two unconstrained stores independently remembering the same fact. Partition memory classes or make one layer derived from the other.</td>
+                </tr>
+                <tr>
+                  <th>Lyra Memory + Letta</th>
+                  <td>Cross-runtime governed memory + persistent agent runtime and attached working memory/state.</td>
+                  <td>When an agent needs stable runtime context while broader durable associations live outside the runtime.</td>
+                  <td>Keep runtime memory focused on current agent state, selected summaries, or pointers; do not silently turn copied state into a competing durable owner.</td>
+                </tr>
+                <tr>
+                  <th>Lyra Memory + OpenViking</th>
+                  <td>Governed durable significance + broader resource/memory/skill context organization and navigation.</td>
+                  <td>When a unified context database is useful for resources and skills while a narrower governed memory owner is still desired.</td>
+                  <td>There is substantial overlap. Give each memory class one owner, or use one system primarily as navigation/indexing rather than duplicating the same memories.</td>
+                </tr>
+                <tr>
+                  <th>ChatGPT Memory + Lyra Memory</th>
+                  <td>Product-level personalization/continuity + developer-controlled governed project memory.</td>
+                  <td>When platform personalization is useful to the human experience while project-specific memory needs explicit provenance, lifecycle, and programmatic contracts.</td>
+                  <td>This is coexistence, not a backend integration. Do not treat ChatGPT personalization state as the canonical or programmable project-memory store.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="quiet">A practical rule: combine systems when they own different stages—formation, durable storage, indexing/retrieval, runtime context, or canonical evidence. If two systems both want to be the writable owner of the same fact, define reconciliation first or choose one.</p>
 
           <div class="sources">
             <h3>Primary sources</h3>
@@ -455,6 +581,7 @@
                 <li>Vector embeddings as the production retrieval baseline.</li>
                 <li>Large-corpus retrieval or latency claims.</li>
                 <li>A stable public portable-contract specification.</li>
+                <li>A fully specified Lyra Memory ↔ MemPalace bridge and online/offline reconciliation contract.</li>
                 <li>A supported public reference implementation.</li>
               </ul>
             </section>
