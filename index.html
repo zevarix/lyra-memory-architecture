@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lyra Memory — Governed Long-Term Memory for AI Agents</title>
   <meta name="description" content="A public architecture explainer for governed long-term agent memory: selective persistence, provenance, correction history, and a hard boundary between recollection and authority.">
-  <meta name="theme-color" content="#0b0f14">
+  <meta name="theme-color" content="#080d2a">
   <link rel="canonical" href="https://zevarix.github.io/lyra-memory-architecture/">
+  <link rel="icon" type="image/png" href="assets/lyra-icon.png">
+  <link rel="apple-touch-icon" href="assets/lyra-icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,7 +17,7 @@
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="#top" aria-label="Lyra Memory home">
-        <span class="brand-mark" aria-hidden="true">LM</span>
+        <img class="brand-icon" src="assets/lyra-icon.png" alt="" width="32" height="32">
         <span>Lyra Memory</span>
       </a>
       <nav aria-label="Primary">
@@ -41,15 +43,18 @@
           </div>
         </div>
 
-        <aside class="boundary" aria-label="Memory and authority boundary">
-          <div class="boundary-row">
-            <span class="boundary-term">Memory</span>
-            <span>Significance, cues, provenance, history</span>
-          </div>
-          <div class="boundary-not" aria-hidden="true">≠</div>
-          <div class="boundary-row">
-            <span class="boundary-term">Canonical owner</span>
-            <span>Current truth, permission, execution state</span>
+        <aside class="hero-side" aria-label="Memory and authority boundary">
+          <img class="hero-emblem" src="assets/lyra-icon.png" alt="" width="128" height="128">
+          <div class="boundary">
+            <div class="boundary-row">
+              <span class="boundary-term">Memory</span>
+              <span>Significance, cues, provenance, history</span>
+            </div>
+            <div class="boundary-not" aria-hidden="true">≠</div>
+            <div class="boundary-row">
+              <span class="boundary-term">Canonical owner</span>
+              <span>Current truth, permission, execution state</span>
+            </div>
           </div>
         </aside>
       </div>
