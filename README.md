@@ -6,6 +6,8 @@ Public architecture, research, adoption guidance, and explainer site for Lyra Me
 
 This repository explains the model without publishing the private implementation or treating current deployment choices as requirements of the architecture.
 
+The implementation owner is the private `zevarix/lyra-memory` repository. Its source and operational evidence remain intentionally access-restricted; this public repository does not mirror them.
+
 ## Public site
 
 https://zevarix.github.io/lyra-memory-architecture/
