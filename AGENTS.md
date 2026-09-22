@@ -65,6 +65,8 @@ Use its actual visual language rather than generic AI-product styling:
 
 The icon may appear as the header mark, favicon/social image, and one prominent hero identity element. Do not tile it, turn it into decorative wallpaper, or invent unrelated robot/brain/circuit imagery.
 
+Use the Product-selected original imagery, or deterministic crops/resizes/format derivatives of it, for site identity. Do not replace it with a generated reinterpretation or composite merely to solve layout, cropping, or blending problems. Screenshots supplied to demonstrate a visual defect are diagnostic evidence unless Product explicitly adopts them as source artwork.
+
 Preserve the subject-grounded readability direction already established for the site: open editorial structure, real hierarchy, meaningful numbering only, and `Memory ≠ Canonical Owner` as the central visual/architectural idea. Style passes may add restrained luminosity around the icon or meaningful state accents, but should not reintroduce generic rounded-card grids, decorative section badges, purple-gradient hero backgrounds, or shadow-heavy SaaS/AI landing-page conventions.
 
 ## Public automation
