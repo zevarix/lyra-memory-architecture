@@ -887,3 +887,257 @@ footer {
     scroll-behavior: auto;
   }
 }
+
+/* Same-origin Markdown reader. The .md files remain canonical; this is presentation only. */
+.doc-reader {
+  width: min(900px, calc(100vw - 2rem));
+  height: min(88dvh, 920px);
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  color: var(--text);
+  background: var(--bg-soft);
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+}
+
+.doc-reader::backdrop {
+  background: rgba(3, 7, 24, .8);
+  backdrop-filter: blur(4px);
+}
+
+.doc-reader-shell {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  width: 100%;
+  height: 100%;
+}
+
+.doc-reader-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.35rem 1.5rem 1.2rem;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.doc-reader-heading {
+  min-width: 0;
+}
+
+.doc-reader-eyebrow {
+  margin: 0 0 .35rem;
+  color: var(--accent);
+  font-size: .72rem;
+  font-weight: 760;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.doc-reader-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  line-height: 1.15;
+}
+
+.doc-reader-path {
+  margin: .45rem 0 0;
+  color: var(--quiet);
+  font: 500 .78rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+
+.doc-reader-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: .7rem;
+}
+
+.doc-reader-actions a,
+.doc-reader-actions button {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem .75rem;
+  border-radius: 9px;
+  font: inherit;
+  font-size: .86rem;
+  font-weight: 650;
+}
+
+.doc-reader-actions a {
+  color: var(--accent-strong);
+  text-decoration: none;
+  border: 1px solid var(--line-strong);
+}
+
+.doc-reader-actions button {
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  cursor: pointer;
+}
+
+.doc-reader-actions a:hover,
+.doc-reader-actions button:hover {
+  border-color: var(--accent);
+}
+
+.doc-reader-status {
+  margin: 0;
+  padding: 1rem 1.5rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
+.doc-reader-content {
+  width: 100%;
+  max-width: 76ch;
+  min-height: 0;
+  margin-inline: auto;
+  padding: 2rem 2.25rem 3rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.doc-reader-content > :first-child {
+  margin-top: 0;
+}
+
+.doc-reader-content > :last-child {
+  margin-bottom: 0;
+}
+
+.doc-reader-content h2,
+.doc-reader-content h3,
+.doc-reader-content h4,
+.doc-reader-content h5,
+.doc-reader-content h6 {
+  max-width: 32ch;
+  margin: 2.25rem 0 .75rem;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.doc-reader-content h2,
+.doc-reader-content h3 {
+  font-size: 1.55rem;
+}
+
+.doc-reader-content h4 {
+  font-size: 1.18rem;
+}
+
+.doc-reader-content h5,
+.doc-reader-content h6 {
+  font-size: 1rem;
+}
+
+.doc-reader-content p,
+.doc-reader-content li {
+  color: var(--muted);
+}
+
+.doc-reader-content p {
+  margin: 0 0 1rem;
+}
+
+.doc-reader-content ul,
+.doc-reader-content ol {
+  margin: .7rem 0 1.35rem;
+  padding-left: 1.4rem;
+}
+
+.doc-reader-content li + li {
+  margin-top: .35rem;
+}
+
+.doc-reader-content strong {
+  color: var(--text);
+}
+
+.doc-reader-content a {
+  overflow-wrap: anywhere;
+}
+
+.doc-reader-content code {
+  padding: .08em .32em;
+  border-radius: 4px;
+  background: rgba(123, 162, 246, .09);
+}
+
+.doc-reader-content pre {
+  margin: 1.25rem 0;
+  padding: 1rem 1.1rem;
+  overflow: auto;
+  color: var(--ice);
+  background: #070b20;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.doc-reader-content pre code {
+  padding: 0;
+  background: transparent;
+}
+
+.doc-reader-content blockquote {
+  margin: 1.35rem 0;
+  padding: .2rem 0 .2rem 1rem;
+  border-left: 2px solid var(--violet);
+}
+
+.doc-reader-content blockquote p {
+  margin: 0;
+}
+
+.doc-reader-content hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 720px) {
+  .doc-reader {
+    width: calc(100vw - .75rem);
+    height: calc(100dvh - .75rem);
+    border-radius: 12px;
+  }
+
+  .doc-reader-header {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .doc-reader-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .doc-reader-actions a,
+  .doc-reader-actions button {
+    min-height: 42px;
+    padding: .5rem .65rem;
+  }
+
+  .doc-reader-actions a {
+    font-size: .78rem;
+  }
+
+  .doc-reader-status {
+    padding: .85rem 1rem;
+  }
+
+  .doc-reader-content {
+    padding: 1.35rem 1rem 2.5rem;
+    scrollbar-gutter: auto;
+  }
+}

@@ -69,6 +69,17 @@ Use the Product-selected original imagery, or deterministic crops/resizes/format
 
 Preserve the subject-grounded readability direction already established for the site: open editorial structure, real hierarchy, meaningful numbering only, and `Memory ≠ Canonical Owner` as the central visual/architectural idea. Style passes may add restrained luminosity around the icon or meaningful state accents, but should not reintroduce generic rounded-card grids, decorative section badges, purple-gradient hero backgrounds, or shadow-heavy SaaS/AI landing-page conventions.
 
+## Public document reader
+
+Markdown under `docs/` remains the canonical authored source. The in-page reader is presentation-only progressive enhancement:
+
+- keep each `.md` link as a real same-origin `href` so no-JS, modified-click, and direct navigation still work;
+- use native `<dialog>` and small vanilla JavaScript rather than a frontend framework or external Markdown dependency;
+- fetch only same-origin `.md` targets selected by the page;
+- render a bounded Markdown subset by constructing DOM nodes; do not pass raw Markdown/HTML through `innerHTML`;
+- preserve an explicit “View raw Markdown” route;
+- verify Escape/Close behavior, focus return, mobile containment, and the normal-link fallback in a real browser.
+
 ## Public automation
 
 Repository visibility: **public**.

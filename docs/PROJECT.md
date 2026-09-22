@@ -45,9 +45,9 @@ Autonomous shared/flex worker execution: not applicable under the current public
 
 ## Stack
 
-Dependency-free static HTML and CSS served by GitHub Pages.
+Dependency-free static HTML/CSS with a small vanilla-JavaScript Markdown reader, served by GitHub Pages.
 
-No client JavaScript is required for the initial site.
+The document reader is progressive enhancement only: canonical same-origin `.md` links remain normal links when JavaScript or native `<dialog>` support is unavailable. The reader fetches the existing Markdown source and renders a bounded safe subset without executing embedded HTML.
 
 No analytics, tracking pixels, hosted fonts, cookies, or external runtime dependencies are used.
 
