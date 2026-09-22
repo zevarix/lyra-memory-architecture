@@ -314,7 +314,7 @@
               <li><a href="https://www.openviking.ai/docs">OpenViking documentation</a></li>
               <li><a href="https://langchain-ai.github.io/langmem/concepts/conceptual_guide/">LangMem — conceptual guide</a></li>
             </ul>
-            <p>See <a href="docs/RESEARCH-SOURCES.md">the research-source note</a> for the claim boundaries used on this page.</p>
+            <p>See <a href="docs/RESEARCH-SOURCES.md" data-doc-reader>the research-source note</a> for the claim boundaries used on this page.</p>
           </div>
         </div>
       </div>
@@ -470,7 +470,7 @@
             <li>Prove a clean public implementation boundary and scrub history and configuration.</li>
             <li>Make an explicit licensing decision under the appropriate authority.</li>
           </ol>
-          <p><a href="docs/REFERENCE-IMPLEMENTATION-READINESS.md">Read the readiness checklist →</a></p>
+          <p><a href="docs/REFERENCE-IMPLEMENTATION-READINESS.md" data-doc-reader>Read the readiness checklist →</a></p>
 
           <aside class="withheld">
             <h3>What is deliberately not public yet</h3>
@@ -498,5 +498,25 @@
       <p>No analytics · No third-party runtime dependencies · Synthetic examples only</p>
     </div>
   </footer>
+
+  <dialog class="doc-reader" id="doc-reader" aria-labelledby="doc-reader-title">
+    <div class="doc-reader-shell">
+      <header class="doc-reader-header">
+        <div class="doc-reader-heading">
+          <p class="doc-reader-eyebrow">Documentation</p>
+          <h2 id="doc-reader-title" data-doc-title>Document</h2>
+          <p class="doc-reader-path" data-doc-path></p>
+        </div>
+        <div class="doc-reader-actions">
+          <a href="#" data-doc-raw target="_blank" rel="noopener">View raw Markdown <span aria-hidden="true">↗</span></a>
+          <button type="button" data-doc-close autofocus>Close</button>
+        </div>
+      </header>
+      <p class="doc-reader-status" data-doc-status role="status" aria-live="polite" hidden></p>
+      <article class="doc-reader-content" data-doc-content hidden></article>
+    </div>
+  </dialog>
+
+  <script src="doc-reader.js" defer></script>
 </body>
 </html>
