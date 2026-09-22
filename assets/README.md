@@ -32,6 +32,6 @@ Dominant source colors include:
 - `#313fa0` — stronger indigo boundary;
 - `#7ba2f6` / `#8aa4f6` — electric blue glow;
 - `#cde1fd` — cool near-white highlight;
--  — restrained secondary violet, lightened within the icon's luminous edge family to preserve readable contrast.
+- `#8a75f6` — restrained secondary violet, lightened within the icon's luminous edge family to preserve readable contrast.
 
 Do not turn these colors into an excuse for generic purple-gradient AI styling. The icon is the primary visual anchor; the page remains an open editorial architecture document.
