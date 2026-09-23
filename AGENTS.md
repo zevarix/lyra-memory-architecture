@@ -49,6 +49,8 @@ Preserve these distinctions unless Product direction explicitly changes them:
 - **owning repositories/systems** — current truth and authority;
 - **identity canon** — current agent identity when applicable.
 
+When the public explanation discusses Identity Canon together with Lyra Memory, preserve the ownership split and make the benefit concrete: canon keeps the current self concise; memory can preserve durable context, provenance, and the history that explains how identity changed. Pairing may improve continuity and explainability, but must never imply automatic synchronization, memory-to-canon writeback, or that retrieved context can override current identity.
+
 Retrieval never grants execution authority.
 
 ## Visual direction

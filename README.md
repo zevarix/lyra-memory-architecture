@@ -41,9 +41,21 @@ Lyra Memory is durable associative context/significance. It does not replace:
 - current canonical repositories, APIs, databases, policy, or user direction;
 - Session Continuity for unresolved execution recovery;
 - MemPalace for local semantic/index/navigation across durable memory and canonical-source pointers;
-- identity canon for current agent identity; the separate public [Agent Identity Canon](https://github.com/zevarix/agent-identity-canon) project provides a reusable framework without becoming a Lyra Memory dependency.
+- identity canon for current agent identity; the separate public [Agent Identity Canon](https://zevarix.github.io/agent-identity-canon/) project provides a reusable framework without becoming a Lyra Memory dependency.
 
 A retrieved memory is context. It is never execution authority.
+
+## Pairing with Agent Identity Canon
+
+Lyra Memory and Agent Identity Canon can be used independently.
+
+- Use Lyra Memory alone when the main need is durable associative context, provenance, and retrieval.
+- Use Agent Identity Canon alone when the main need is a stable, inspectable current identity.
+- Use both when a long-lived agent should be able to evolve while preserving the history, influences, and reasons that explain how its current identity developed.
+
+Pairing can keep current identity concise, preserve explainable change, improve continuity across context boundaries, and make influence easier to inspect without turning memory into current identity or canon into a history store.
+
+The pairing is architectural; it does not imply an automatic synchronization bridge. Memory may inform identity review, but current canon remains authoritative for who the agent is now.
 
 ## Current maturity
 
