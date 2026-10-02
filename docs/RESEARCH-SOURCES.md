@@ -246,3 +246,9 @@ The public architecture uses this only as an engineering metaphor for cue-driven
 - canonical evidence still must be checked before material action.
 
 The public page does **not** claim that Lyra Memory or MemPalace reproduces biological memory, human cognition, consciousness, or sensory processing.
+
+## 2026-10-02 supplementary retrieval review
+
+The [architecture-options note](RETRIEVAL-ARCHITECTURE-OPTIONS.md) records refreshed primary sources for MemPalace, Postgres/Supabase, managed vector services and operational tradeoffs. [Synthetic methodology](SYNTHETIC-RETRIEVAL-METHODOLOGY.md) separates diagnostic fixtures from production parity. [Ambient episodic retrieval](AMBIENT-EPISODIC-RETRIEVAL.md) describes cue-to-source preservation without changing authority or asserting an automatic synchronization bridge.
+
+This supplementary review does not claim that every older comparison above was revalidated on this date.
