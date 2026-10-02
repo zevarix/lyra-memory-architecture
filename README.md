@@ -71,3 +71,11 @@ See:
 This repository is public from its first commit. Use synthetic examples only. Do not copy private implementation details here merely to make the explanation feel complete.
 
 No source-code or documentation license has been selected yet. Do not add one without the appropriate decision.
+
+## Retrieval architecture research
+
+- [Architecture options and preservation gates](docs/RETRIEVAL-ARCHITECTURE-OPTIONS.md)
+- [Synthetic retrieval methodology](docs/SYNTHETIC-RETRIEVAL-METHODOLOGY.md)
+- [Ambient episodic retrieval](docs/AMBIENT-EPISODIC-RETRIEVAL.md)
+
+These are public-safe research and design notes, not a public implementation or a claim of production benchmark parity.
